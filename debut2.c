@@ -12,11 +12,11 @@
 #define MAX_FILENAME_LENGTH 256
 
 
-char _env(char *input)
+char *_env(char *input)
 {
 	/*Variable declaration*/
 	char *path, path_copy[MAX_PATH_LENGTH], *dir, *filename;
-	char filepath[MAX_PATH_LENGTH + MAX_FILENAME_LENGTH + 1];
+	char *filepath = malloc(MAX_PATH_LENGTH + MAX_FILENAME_LENGTH + 1);
 
 
 	/*Get the PATH environment variable*/
@@ -52,7 +52,7 @@ char _env(char *input)
 	}
 
 	/*If the file was not fount in the PATH, print an error message and exit with status 1*/
-	fprintf(stderr, "%s not found in PATH\n", filename);
+	return (NULL);
 
 }
 
@@ -118,7 +118,7 @@ int main(void)
 		else if (pid == 0)
 		{
 			/*Execute programs in the child process*/
-			if (execve(args[0], args, NULL) == -1);
+			if (execve(args[0], args, NULL) == -1)
 			fprintf(stderr, "Execution failed\n");
 			exit(1);
 		}
@@ -126,6 +126,7 @@ int main(void)
 		{
 			wait(&status);
 		}
+		free(cmd);
 	}
 
 	return (0);
