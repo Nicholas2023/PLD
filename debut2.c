@@ -49,7 +49,7 @@ char *_env(char *input)
 		/*Create the full file path by concatenating the directory and the filename*/
 		snprintf(filepath, MAX_PATH_LENGTH + MAX_FILENAME_LENGTH, "%s/%s", dir, filename);
 		/*Check if the file exists at this path*/
-		if (access(filepath, F_OK) == 0)
+		if (access(filepath, X_OK) == 0)
 		{
 			return (filepath);
 		}
