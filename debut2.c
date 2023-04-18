@@ -7,7 +7,54 @@
 
 #define MAX_LINE 80
 
+/*Define constants for max path and filename length*/
+#define MAX_PATH_LENGTH 1024
+#define MAX_FILENAME_LENGTH 256
 
+
+char _env(char *input)
+{
+	/*Variable declaration*/
+	char *path, path_copy[MAX_PATH_LENGTH], *dir, *filename;
+	char filepath[MAX_PATH_LENGTH + MAX_FILENAME_LENGTH + 1];
+
+
+	/*Get the PATH environment variable*/
+	path = getenv("PATH");
+
+
+	/*Copy the PATH string to a buffer*/
+	strncpy(path_copy, path, MAX_PATH_LENGTH -1);
+
+	/*Make sure the buffer is null terminated*/
+	path_copy[MAX_PATH_LENGTH - 1] = '\0';
+
+	/*Get the filename to search for from the program arguments*/
+	filename = input;
+
+	/*Split the PATH string into directories using ':' as a delimiter*/
+	dir = strtok(path_copy, ":");
+
+	/*Loop through each directory in the PATH*/
+
+	while (dir)
+	{
+		/*Create the full file path by concatenating the directory and the filename*/
+		snprintf(filepath, MAX_PATH_LENGTH + MAX_FILENAME_LENGTH, "%s/%s", dir, filename);
+		/*Check if the file exists at this path*/
+		if (access(filepath, F_OK) == 0)
+		{
+			return (filepath);
+		}
+
+		/*Get the next directory in the PATH*/
+		dir = strtok(NULL, ":");
+	}
+
+	/*If the file was not fount in the PATH, print an error message and exit with status 1*/
+	fprintf(stderr, "%s not found in PATH\n", filename);
+
+}
 
 
 int main(void)
@@ -16,7 +63,7 @@ int main(void)
 	char command[MAX_LINE];
 	pid_t pid;
 	int status, i, should_run = 1;
-	char *token;
+	char *token, *cmd;
 
 
 	/*Infinite loop for the command prompt*/
@@ -37,10 +84,10 @@ int main(void)
 		command[strlen(command)-1] = '\0';
 
 		/*Function call*/
-		_env(command);
+		cmd = _env(command);
 
 		/*Extract individual tokens from the input string*/
-		token = strtok(_env, " ");
+		token = strtok(cmd, " ");
 
 		/*Store the tokens in args array for commands to be executed*/
 		for (i = 0; token != NULL; i++)
@@ -71,7 +118,7 @@ int main(void)
 		else if (pid == 0)
 		{
 			/*Execute programs in the child process*/
-			if (execve(arg[0], args, NULL) == -1);
+			if (execve(args[0], args, NULL) == -1);
 			fprintf(stderr, "Execution failed\n");
 			exit(1);
 		}
