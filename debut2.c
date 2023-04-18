@@ -8,8 +8,8 @@
 #define MAX_LINE 80
 
 /*Define constants for max path and filename length*/
-#define MAX_PATH_LENGTH 1024
-#define MAX_FILENAME_LENGTH 256
+#define MAX_PATH_LENGTH 80
+#define MAX_FILENAME_LENGTH 80
 
 
 char *_env(char *input)
@@ -17,6 +17,13 @@ char *_env(char *input)
 	/*Variable declaration*/
 	char *path, path_copy[MAX_PATH_LENGTH], *dir, *filename;
 	char *filepath = malloc(MAX_PATH_LENGTH + MAX_FILENAME_LENGTH + 1);
+
+	/*Check for error during memory allocation*/
+	if (filepath == NULL)
+	{
+		fprintf(stderr, "Memory allocation failed\n");
+		exit(EXIT_FAILURE);
+	}
 
 
 	/*Get the PATH environment variable*/
@@ -52,6 +59,8 @@ char *_env(char *input)
 	}
 
 	/*If the file was not fount in the PATH, print an error message and exit with status 1*/
+
+	free(filepath);
 	return (NULL);
 
 }
