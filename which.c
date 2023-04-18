@@ -39,7 +39,7 @@ int env(char *argv)
 		snprintf(filepath, MAX_PATH_LENGTH + MAX_FILENAME_LENGTH, "%s/%s", dir, filename);
 		/*Check if the file exists at this path*/
 		if (access(filepath, X_OK) == 0)
-			return (0)
+			return (0);
 
 		/*Get the next directory in the PATH*/
 		dir = strtok(NULL, ":");
