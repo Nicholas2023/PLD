@@ -20,8 +20,7 @@ int main(int ac, char **av, char **env)
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);/*print shell prompt*/
 	while ((read_char = getline(&input_buffer, &buffer_size, stdin)))
-	{	
-		/*Read user input*/
+	{	/*Read user input*/
 		i = 0;
 		if (read_char == EOF)/*Exit if the user input is reached*/
 		{
