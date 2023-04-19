@@ -37,7 +37,7 @@ char *_env(char *input)
 	path_copy[MAX_PATH_LENGTH - 1] = '\0';
 
 	/*Get the filename to search for from the program arguments*/
-	filename = input;
+	/*filename = input;*/
 
 	/*Split the PATH string into directories using ':' as a delimiter*/
 	dir = strtok(path_copy, ":");
@@ -47,7 +47,7 @@ char *_env(char *input)
 	while (dir)
 	{
 		/*Create the full file path by concatenating the directory and the filename*/
-		snprintf(filepath, MAX_PATH_LENGTH + MAX_FILENAME_LENGTH, "%s/%s", dir, filename);
+		snprintf(filepath, MAX_PATH_LENGTH + MAX_FILENAME_LENGTH, "/%s/%s", dir, input);
 		/*Check if the file exists at this path*/
 		if (access(filepath, X_OK) == 0)
 		{
