@@ -147,7 +147,7 @@ Once the command interpreter is running, you can use the following commands to i
 The following individuals have contributed to the development of this project:
 
 - `Nicholas Otieno Odhiambo`
-- `Anna Wambui Muturi`
+- `Anna Wamboi Muturi`
 
 ## Branches and Pull Requests :raising_hand:
 
