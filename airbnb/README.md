@@ -1,6 +1,6 @@
 # AirBnB Clone :smile:
 
-## Description
+## Description :sparkles:
 
 This is a command-line interface (CLI) implementation of a simplified version of AirBnB. It allows users to interact with the application by creating, updating and deleting objects such as users, places, bookings and more.
 
@@ -15,13 +15,13 @@ This project utilizes the following classes:
 | PUBLIC CLASS ATTRIBUTE | | | `email` `password` `first_name` `last_name` | `name` | `state_id` `name` | `name` | `city_id` `user_id` `name` `description` `number_rooms` `number_bathrooms` `max_guest` `price_by_night` `latitude` `longitude` `amenity_ids` | `place_id` `user_id` `text` |
 | PRIVATE CLASS ATTRIBUTE | | `file_path` `objects` | | | | | | |
 
-## Storage
+## Storage :zap:
 
 The above classes are handles by the abstracted storage engine defined in the `FileStorage` class.
 Every time the backend is initialized, AirBnB instantiates an instance of `FileStorage` called `storage`. The `storage` object is loaded/re-loaded from any class instances stored in the JSON file `file.json`. As class instance are created, updated, or deleted, the `storage` object is used to register corresponding changes in the `file.json`.
 
 
-## Command Interpreter / Console
+## Command Interpreter / Console :cl:
 
 The command interpreter provides a way to interact with the AirBnB application through a CLI. Here's how you can start and use it:
 
@@ -149,7 +149,7 @@ The following individuals have contributed to the development of this project:
 - `Nicholas Otieno Odhiambo`
 - `Anna Wambui Muturi`
 
-## Branches and Pull Requests
+## Branches and Pull Requests :raising_hand:
 
 We encourage the use of brances and pull request for collaborative development. When working on new features or bug fixes, create a new branch for your changes and submit a pull request to merge your changes intop the main branch.
 
