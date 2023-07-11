@@ -15,7 +15,7 @@ class BaseModel:
         updated_at (datetime): The datetime when the instance was last updated
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         Initialize a new instance of BaseModel
         Attributes:
@@ -23,10 +23,25 @@ class BaseModel:
             using `uuid.uuid4()`
             created_at (datetime): Set to current datetime
             updated_at (datetime): Set to current datetime
+        Args:
+            *args: Variable length arg list
+            **kwargs: Arbitrary keyword arg containing attributes names
+            and their values
         """
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
+
+        if not kwargs:
+            self.id = str(uuid4())
+            self.created_at = self.updated_at = datetime.now()
+        else:
+            for key, value in kwargs.items():
+                if key != '__class__':
+                    if key in ('created_at', 'updated_at'):
+                        setattr(self, key, datetime.fromisoformat(value))
+                    else:
+                        setattr(self, key, value)
 
     def __str__(self):
         """
