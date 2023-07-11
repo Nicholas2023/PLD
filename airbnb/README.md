@@ -21,11 +21,11 @@ The above classes are handles by the abstracted storage engine defined in the `F
 Every time the backend is initialized, AirBnB instantiates an instance of `FileStorage` called `storage`. The `storage` object is loaded/re-loaded from any class instances stored in the JSON file `file.json`. As class instance are created, updated, or deleted, the `storage` object is used to register corresponding changes in the `file.json`.
 
 
-## Command Interpreter / Console :cl:
+## Command Interpreter / Console :vibration_mode:
 
 The command interpreter provides a way to interact with the AirBnB application through a CLI. Here's how you can start and use it:
 
-### How to start
+### How to start :page_with_curl:
 
 1. Clone the repository to your local machine:
 
@@ -44,7 +44,7 @@ cd AirBnB_clone
 ./console.py
 ```
 
-### How to Use
+### How to Use :pushpin:
 
 The console can be run both interactively and non-interactively. To run the console in non-interactive mode, pipe any command(s) into an execution of the file `console.py` at the command line.
 
@@ -122,7 +122,7 @@ Once the command interpreter is running, you can use the following commands to i
 (hbnb) quit
 ```
 
-### Examples
+### Examples :scroll:
 
 - Creating a new user:
 
@@ -142,7 +142,7 @@ Once the command interpreter is running, you can use the following commands to i
 (hbnb) update City 54321 name "New City Name"
 ```
 
-## Authors
+## Authors :mortar_board:
 
 The following individuals have contributed to the development of this project:
 
