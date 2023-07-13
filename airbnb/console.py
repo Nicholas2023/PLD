@@ -12,6 +12,7 @@ from models.base_model import BaseModel
 # A global constant since both functions within and outside uses it
 cls = [
     "BaseModel"
+    "User"
 ]
 
 
