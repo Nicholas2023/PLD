@@ -7,12 +7,13 @@ import re
 from shlex import split
 
 import models
-import models.base_model import BaseModel
+from models.base_model import BaseModel
 
 # A global constant since both functions within and outside uses it
 cls = [
     "BaseModel"
 ]
+
 
 def parse(arg):
     """
@@ -22,10 +23,10 @@ def parse(arg):
     brackets = re.search(r"\[(.*?)\]", arg)
     if curly_braces is None:
         if brackets is None:
-            return [i.strip("," for i in split(arg)]
+            return [i.strip(",") for i in split(arg)]
         else:
             lexer = split(arg[:brackets.span()[0]])
-            ret1 = [i.strip(",") for i in lexer]
+            retl = [i.strip(",") for i in lexer]
             retl.append(brackets.group())
             return retl
     else:
@@ -33,6 +34,7 @@ def parse(arg):
         retl = [i.strip(",") for i in lexer]
         retl.append(curly_braces.group())
         return retl
+
 
 def check_args(args):
     """
@@ -58,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
     Attributes:
         prompt (str): The prompt displayed in the command line interface
     """
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
     storage = models.storage
 
     def default(self, arg):
@@ -119,7 +121,7 @@ class HBNBCommand(cmd.Cmd):
             print(eval(args[0])().id)
             self.storage.save()
 
-    def do_show(self, argv)
+    def do_show(self, argv):
         """
         Prints the string representation of an instance based on the
         class name and id
@@ -164,7 +166,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 print([str(obj) for obj in objects
-                        if args[0] in str(obj)])
+                       if args[0] in str(obj)])
 
     def do_update(self, argv):
         """
@@ -173,7 +175,7 @@ class HBNBCommand(cmd.Cmd):
         """
         arg_list = check_args(argv)
         if arg_list:
-            if len(arg_list) == 1
+            if len(arg_list) == 1:
                 print("** instance id missing **")
             else:
                 instance_id = "{}.{}".format(arg_list[0], arg_list[1])
